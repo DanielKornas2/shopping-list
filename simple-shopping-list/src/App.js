@@ -15,7 +15,7 @@ const Header = (props) => {
 }
 
 const Item = (props) => (
-  <li>{props.name}</li>
+  <li style= { props.active ?  {fontWeight: "bold"} : { color : "gray" } }>{props.name}</li>
 )
 
 const ListItems = (props) => {

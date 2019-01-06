@@ -3,20 +3,37 @@ import logo from './logo.svg';
 import './App.css';
 
 const Header = (props) => {
+  const activeItems = props.items.filter(item => item.active);
+  const activeNumber = activeItems.length;
+
   return (
-    <header>Podsumowanie zamówienia</header>
+    <header>
+      <h2>Wielkość zamówienia: {activeNumber}</h2>
+      <h2>{ activeNumber===0 ? 'Nic nie kupujesz' : `Do zapłaty: ${activeNumber * 10} złotych` } </h2>
+    </header>
   )
 }
 
+const Item = (props) => (
+  <li>{props.name}</li>
+)
+
 const ListItems = (props) => {
+  const item = props.items.map(item => (
+    <Item 
+      key={item.id}
+      name = {item.name}
+      active = {item.active}
+    />
+  ));
+
   return (
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
+    <div>
+      <h1>Twoje zamówienie</h1>
+      <ul>
+        {item}
+      </ul>
+    </div>   
   )
 }
 
@@ -34,7 +51,7 @@ class App extends Component {
     return (
       <>
         <Header items={this.state.items} />
-        <ListItems />
+        <ListItems items={this.state.items} />
       </>
     );
   }

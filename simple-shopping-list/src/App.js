@@ -15,15 +15,22 @@ const Header = (props) => {
 }
 
 const Item = (props) => (
-  <li style= { props.active ?  {fontWeight: "bold"} : { color : "gray" } }>{props.name}</li>
+  <li 
+  style = { props.active ?  {fontWeight: "bold"} : { color : "gray" } }
+  onClick = {() => props.handleChangeStatus(props.id)}
+  > 
+    {props.name} 
+  </li>
 )
 
 const ListItems = (props) => {
   const item = props.items.map(item => (
     <Item 
       key={item.id}
+      id={item.id}
       name = {item.name}
       active = {item.active}
+      handleChangeStatus = {props.handleChangeStatus}
     />
   ));
 
@@ -38,6 +45,13 @@ const ListItems = (props) => {
 }
 
 class App extends Component {
+  handleChangeStatus = (id) => {
+    console.log(id)
+    // this.setState = {
+    //   itemcomm
+    // }
+  }
+
   state = {
     items: [
       { id: 1, name: "produkt1", active: true },
@@ -51,7 +65,7 @@ class App extends Component {
     return (
       <>
         <Header items={this.state.items} />
-        <ListItems items={this.state.items} />
+        <ListItems items={this.state.items} handleChangeStatus={this.handleChangeStatus}/>
       </>
     );
   }

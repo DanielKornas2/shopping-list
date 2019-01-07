@@ -46,19 +46,20 @@ const ListItems = (props) => {
 
 class App extends Component {
   handleChangeStatus = (id) => {
-    console.log(id)
-    // this.setState = {
-    //   itemcomm
-    // }
+    const items = this.state.items;
+    items[id].active = !items[id].active;
+    this.setState ({
+      items : items,
+    })
   }
 
   state = {
     items: [
-      { id: 1, name: "produkt1", active: true },
-      { id: 2, name: "produkt2", active: true },
-      { id: 3, name: "produkt3", active: false },
-      { id: 4, name: "produkt4", active: true },
-      { id: 5, name: "produkt5", active: false },
+      { id: 0, name: "produkt1", active: true },
+      { id: 1, name: "produkt2", active: true },
+      { id: 2, name: "produkt3", active: false },
+      { id: 3, name: "produkt4", active: true },
+      { id: 4, name: "produkt5", active: false },
     ]
   }
   render() {

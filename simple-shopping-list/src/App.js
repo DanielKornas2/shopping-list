@@ -16,7 +16,7 @@ const Header = (props) => {
 
 const Item = (props) => (
   <li 
-  style = { props.active ?  {fontWeight: "bold"} : { color : "gray" } }
+  className = { props.active ?  "enabled" : null }
   onClick = {() => props.handleChangeStatus(props.id)}
   > 
     {props.name} 

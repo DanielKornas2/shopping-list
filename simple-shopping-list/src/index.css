@@ -23,3 +23,8 @@ li:nth-child(odd) {
 li:nth-child(even) {
   background-color: #eee;
 }
+
+.enabled {
+  font-weight: bold;
+  color: #4c7700;
+}
